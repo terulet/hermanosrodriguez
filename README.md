@@ -26,6 +26,10 @@ Web de una sola página (landing) en **HTML + CSS + JavaScript puro**. Sin frame
   /images/before.jpg
   /images/after.jpg
   /images/project-1.jpg … /images/project-9.jpg
+  /images/oficio-herramientas.jpg
+  /images/oficio-manos.jpg
+  /images/oficio-albanileria.jpg
+  /images/oficio-furgoneta.jpg
   ```
 - Las imágenes incluidas ahora son **genéricas/representativas**. Sustitúyelas por fotos reales cuando las tengas (manteniendo los mismos nombres). Hasta entonces, los textos `alt` y la galería **no afirman** que sean obras de la empresa.
 
@@ -41,6 +45,13 @@ Cuando tengas el dominio confirmado, cambia la URL en estos puntos de `index.htm
 - Email · **construccionesrodriguez2020@gmail.com**
 - WhatsApp principal · **34687242997** (Carlos), en `script.js` (`WHATSAPP_NUMERO`).
   Para usar el de Manolo como principal, cámbialo por `34615959391`.
+
+### Contador de días del hero
+El número grande del hero ("Más de 18.xxx+ días") se calcula en vivo desde una fecha de inicio definida en `script.js`:
+```
+var START_DATE = "1975-01-01";  // fecha aproximada, cambiar por la real si se conoce
+```
+Si conoces la fecha exacta en que Manolo empezó, ponla ahí. Si el cálculo fallara, el HTML muestra "18.250+" como respaldo (nunca aparece 0).
 
 ### 4. 🚨 Páginas legales — NO PUBLICAR SIN COMPLETAR
 **`aviso-legal.html` y `privacidad.html` contienen datos pendientes entre `[corchetes]`** (titular/razón social, NIF/CIF, domicilio fiscal), señalados con comentarios `PENDIENTE COMPLETAR ANTES DE PUBLICAR`.

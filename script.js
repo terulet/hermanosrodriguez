@@ -11,6 +11,9 @@
   var WHATSAPP_NUMERO = "34687242997";
   var WHATSAPP_TEXTO  = "Hola, me gustaría pedir información sobre un proyecto.";
 
+  // Fecha aproximada de inicio. Cambiar por la fecha real de inicio si se conoce.
+  var START_DATE = "1975-01-01";
+
   /* ---------- Web3Forms (PENDIENTE DE CONECTAR) ----------
      Si más adelante queréis recibir las solicitudes por EMAIL además de
      por WhatsApp, registrad una cuenta gratuita en https://web3forms.com,
@@ -27,6 +30,7 @@
     initNavbar();
     initMobileMenu();
     initReveal();
+    initHeroCounter();
     initCounters();
     initBeforeAfter();
     initWizard();
@@ -96,7 +100,44 @@
     els.forEach(function (el) { io.observe(el); });
   }
 
-  /* ---------- Contadores animados ---------- */
+  /* ---------- Contador de días del hero (vivo, desde START_DATE) ----------
+     Calcula los días transcurridos desde START_DATE hasta hoy y los anima.
+     Si algo falla, se mantiene el valor de respaldo escrito en el HTML. */
+  function initHeroCounter() {
+    var el = document.getElementById("heroDays");
+    if (!el) return;
+    var target;
+    try {
+      var start = new Date(START_DATE);
+      var diff = Date.now() - start.getTime();
+      target = Math.floor(diff / 86400000); // ms por día
+      if (!isFinite(target) || target <= 0) return; // fallback: deja el HTML
+    } catch (e) {
+      return; // fallback: deja el HTML
+    }
+
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      el.textContent = target.toLocaleString("es-ES") + "+";
+      return;
+    }
+
+    var dur = 1800, startTs = null;
+    // arranca desde un valor alto (90%) para que nunca se vea "0" ni un salto feo
+    var from = Math.floor(target * 0.9);
+    function step(ts) {
+      if (!startTs) startTs = ts;
+      var p = Math.min((ts - startTs) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+      var val = Math.floor(from + (target - from) * eased);
+      el.textContent = val.toLocaleString("es-ES") + "+";
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = target.toLocaleString("es-ES") + "+";
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* ---------- Contadores animados (muro de confianza) ---------- */
   function initCounters() {
     var nums = document.querySelectorAll(".trust__num[data-count]");
     if (!nums.length) return;
