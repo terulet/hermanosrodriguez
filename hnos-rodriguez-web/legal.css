@@ -1,0 +1,35 @@
+/* =====================================================================
+   Páginas legales · legal.css
+   Reutiliza la identidad de la web (negro, naranja, blanco roto)
+   ===================================================================== */
+:root {
+  --black:#111111; --carbon:#2B2B2B; --orange:#F15A24; --orange-dk:#d8480f;
+  --offwhite:#F8F7F3; --stone:#D8D6D2; --ink:#1a1a1a; --muted:#6f6c66;
+  --serif:"Fraunces",Georgia,serif; --sans:"Outfit",system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--sans);color:var(--ink);background:var(--offwhite);line-height:1.7;}
+a{color:var(--orange);text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+/* Cabecera */
+.legal-head{background:var(--black);color:#fff;padding:1.1rem clamp(1.2rem,5vw,4rem);display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.legal-head .brand{display:flex;align-items:center;gap:.7rem;color:#fff;text-decoration:none;}
+.legal-head .brand strong{font-family:var(--serif);font-weight:600;font-size:1.1rem;}
+.legal-head .brand svg{display:block;}
+.legal-head .back{color:#fff;font-size:.92rem;font-weight:500;}
+.legal-head .back:hover{color:var(--orange);text-decoration:none;}
+
+/* Contenido */
+.legal-wrap{max-width:780px;margin:0 auto;padding:clamp(2.5rem,7vw,5rem) clamp(1.2rem,5vw,2rem) 4rem;}
+.legal-wrap h1{font-family:var(--serif);font-weight:600;font-size:clamp(1.9rem,5vw,2.8rem);line-height:1.1;margin-bottom:.6rem;}
+.legal-wrap .updated{color:var(--muted);font-size:.9rem;margin-bottom:2.5rem;}
+.legal-wrap h2{font-family:var(--serif);font-weight:600;font-size:1.35rem;margin:2.2rem 0 .8rem;padding-left:.9rem;border-left:3px solid var(--orange);}
+.legal-wrap p{margin-bottom:1rem;color:var(--carbon);}
+.legal-wrap ul{margin:0 0 1rem 1.2rem;color:var(--carbon);}
+.legal-wrap li{margin-bottom:.4rem;}
+.legal-wrap .note{background:#fff;border:1px solid var(--stone);border-left:3px solid var(--orange);border-radius:10px;padding:1rem 1.2rem;margin:1.5rem 0;font-size:.95rem;}
+
+/* Pie */
+.legal-foot{background:var(--black);color:var(--stone);text-align:center;padding:2rem 1rem;font-size:.85rem;}
+.legal-foot a{color:var(--orange);}
