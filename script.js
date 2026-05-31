@@ -116,21 +116,25 @@
     els.forEach(function (el) { io.observe(el); });
   }
 
+  /* ---------- Días transcurridos desde START_DATE (cálculo único compartido) ----------
+     Lo usan tanto el contador del hero como el muro de confianza, para que
+     siempre muestren EXACTAMENTE el mismo número. Devuelve null si falla. */
+  function daysSinceStart() {
+    try {
+      var start = new Date(START_DATE);
+      var d = Math.floor((Date.now() - start.getTime()) / 86400000);
+      return (isFinite(d) && d > 0) ? d : null;
+    } catch (e) { return null; }
+  }
+
   /* ---------- Contador de días del hero (vivo, desde START_DATE) ----------
      Calcula los días transcurridos desde START_DATE hasta hoy y los anima.
      Si algo falla, se mantiene el valor de respaldo escrito en el HTML. */
   function initHeroCounter() {
     var el = document.getElementById("heroDays");
     if (!el) return;
-    var target;
-    try {
-      var start = new Date(START_DATE);
-      var diff = Date.now() - start.getTime();
-      target = Math.floor(diff / 86400000); // ms por día
-      if (!isFinite(target) || target <= 0) return; // fallback: deja el HTML
-    } catch (e) {
-      return; // fallback: deja el HTML
-    }
+    var target = daysSinceStart();
+    if (target === null) return; // fallback: deja el HTML
 
     var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) {
@@ -168,6 +172,11 @@
 
     function animate(el) {
       var target = parseInt(el.getAttribute("data-count"), 10);
+      // Si es el contador de "días", usa el MISMO cálculo dinámico que el hero
+      if (el.getAttribute("data-dynamic") === "days") {
+        var dyn = daysSinceStart();
+        if (dyn !== null) target = dyn;
+      }
       var suffix = el.getAttribute("data-suffix") || "";
       var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       if (reduce) { el.textContent = target.toLocaleString("es-ES") + suffix; return; }
