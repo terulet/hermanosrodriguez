@@ -105,6 +105,19 @@ ol, ul { list-style: none; }
 .brand__mark { display: grid; place-items: center; }
 .brand__roof { color: #fff; transition: color .4s; }
 .nav.is-scrolled .brand__roof { color: var(--carbon); }
+
+/* ---- Animación de entrada del logo (solo cuando body.intro está activo) ---- */
+body.intro .brand__roof {
+  stroke-dasharray: 230;        /* longitud aproximada del trazo del tejado */
+  stroke-dashoffset: 230;
+  animation: roofDraw .55s var(--ease) .1s forwards;
+}
+body.intro .brand__hr {
+  opacity: 0;
+  animation: hrFade .4s ease .5s forwards;
+}
+@keyframes roofDraw { to { stroke-dashoffset: 0; } }
+@keyframes hrFade { from { opacity: 0; } to { opacity: 1; } }
 .brand__text { display: flex; flex-direction: column; line-height: 1.05; }
 .brand__text strong { font-family: var(--serif); font-size: 1.12rem; font-weight: 600; letter-spacing: .01em; }
 .brand__text em { font-style: normal; font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; opacity: .75; }
@@ -279,6 +292,7 @@ ol, ul { list-style: none; }
 .ba__tag { position: absolute; bottom: 16px; z-index: 4; background: rgba(17,17,17,.7); color: #fff; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; padding: .4rem .9rem; border-radius: 50px; pointer-events: none; }
 .ba__tag--before { left: 16px; }
 .ba__tag--after { right: 16px; }
+.ba__note { text-align: center; max-width: 60ch; margin: 1.6rem auto 0; font-size: .85rem; color: var(--muted); }
 
 /* =====================================================================
    PROCESO
@@ -402,6 +416,14 @@ ol, ul { list-style: none; }
    ===================================================================== */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
 .reveal.is-visible { opacity: 1; transform: none; }
+
+/* Entrada escalonada del hero durante la intro (sobria, breve) */
+body.intro .hero__eyebrow { transition-delay: .15s; }
+body.intro .hero__title   { transition-delay: .28s; }
+body.intro .hero__sub     { transition-delay: .42s; }
+body.intro .hero__actions { transition-delay: .54s; }
+body.intro .hero__note    { transition-delay: .64s; }
+body.intro .hero__tag     { transition-delay: .72s; }
 
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; scroll-behavior: auto !important; }

@@ -16,6 +16,9 @@ Web de una sola página (landing) en **HTML + CSS + JavaScript puro**. Sin frame
 
 ## ⚠️ Antes de publicar — checklist
 
+> 🚨 **RECORDATORIO:** las páginas legales (`aviso-legal.html` y `privacidad.html`) **siguen pendientes de completar** con los datos fiscales reales. No publiques la web de forma definitiva hasta rellenarlos (ver punto 4).
+
+
 ### 1. Carpeta de imágenes
 - Debe existir una carpeta **`/images`** junto al `index.html`.
 - Sube **todas** las imágenes dentro de ella con estos nombres exactos:
@@ -30,7 +33,11 @@ Web de una sola página (landing) en **HTML + CSS + JavaScript puro**. Sin frame
   /images/oficio-manos.jpg
   /images/oficio-albanileria.jpg
   /images/oficio-furgoneta.jpg
+  /images/slider-obra-en-marcha.jpg
+  /images/slider-resultado-final.jpg
   ```
+
+  **Slider "El cambio se ve":** las imágenes `slider-obra-en-marcha.jpg` y `slider-resultado-final.jpg` son representativas (entorno mediterráneo). Cuando la empresa tenga fotos reales de obras, sustituir esos dos archivos manteniendo los nombres. Los textos usan "Obra en marcha" / "Resultado final" (no "antes/después" ni "misma vivienda") porque no son el mismo ángulo.
 - Las imágenes incluidas ahora son **genéricas/representativas**. Sustitúyelas por fotos reales cuando las tengas (manteniendo los mismos nombres). Hasta entonces, los textos `alt` y la galería **no afirman** que sean obras de la empresa.
 
 ### 2. Dominio (SEO)
@@ -45,6 +52,9 @@ Cuando tengas el dominio confirmado, cambia la URL en estos puntos de `index.htm
 - Email · **construccionesrodriguez2020@gmail.com**
 - WhatsApp principal · **34687242997** (Carlos), en `script.js` (`WHATSAPP_NUMERO`).
   Para usar el de Manolo como principal, cámbialo por `34615959391`.
+
+### Animación de entrada (intro)
+Al cargar, el logo H.R se dibuja (tejado + letras) y el hero entra de forma escalonada mientras el contador sube hasta el valor real; el "+" aparece al final. Es **no bloqueante** (el contenido se ve desde el primer momento, sin pantalla negra), respeta `prefers-reduced-motion` y solo se reproduce **una vez por sesión** (sessionStorage `hr_intro`). En visitas posteriores de la misma sesión el contenido aparece directo.
 
 ### Contador de días del hero
 El número grande del hero ("Más de 18.xxx+ días") se calcula en vivo desde una fecha de inicio definida en `script.js`:

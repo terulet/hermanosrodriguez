@@ -26,6 +26,7 @@
   var WEB3FORMS_ACTIVO = false;                        // <-- poner en true al conectar
 
   document.addEventListener("DOMContentLoaded", function () {
+    initIntro();
     initYear();
     initNavbar();
     initMobileMenu();
@@ -36,6 +37,21 @@
     initWizard();
     initWhatsApp();
   });
+
+  /* ---------- Intro de entrada (no bloqueante) ----------
+     Activa una entrada animada y sobria del logo y del hero SOLO si:
+       · el usuario no la ha visto ya en esta sesión, y
+       · no ha pedido reducir el movimiento.
+     El contenido SIEMPRE está visible: la clase solo añade matices de animación.
+     Nunca hay pantalla negra ni bloqueo de acceso. */
+  function initIntro() {
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var visto;
+    try { visto = sessionStorage.getItem("hr_intro"); } catch (e) { visto = null; }
+    if (reduce || visto) return;            // entrada directa, sin animación de intro
+    document.body.classList.add("intro");
+    try { sessionStorage.setItem("hr_intro", "1"); } catch (e) {}
+  }
 
   /* ---------- Año del footer ---------- */
   function initYear() {
@@ -122,19 +138,27 @@
       return;
     }
 
-    var dur = 1800, startTs = null;
-    // arranca desde un valor alto (90%) para que nunca se vea "0" ni un salto feo
-    var from = Math.floor(target * 0.9);
+    var hayIntro = document.body.classList.contains("intro");
+    var dur = 1800;
+    // Con intro arranca más bajo (efecto más visible); sin intro, alto para que no salte feo.
+    var from = Math.floor(target * (hayIntro ? 0.82 : 0.9));
+    var delay = hayIntro ? 450 : 0; // espera a que el título haya entrado
+    var startTs = null;
+
+    // Durante la espera, fija el valor inicial (sin "+") para que no haya salto desde el fallback
+    if (hayIntro) el.textContent = from.toLocaleString("es-ES");
+
     function step(ts) {
       if (!startTs) startTs = ts;
       var p = Math.min((ts - startTs) / dur, 1);
       var eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
       var val = Math.floor(from + (target - from) * eased);
-      el.textContent = val.toLocaleString("es-ES") + "+";
+      // El símbolo "+" aparece solo al final de la animación
+      el.textContent = val.toLocaleString("es-ES") + (p >= 1 ? "+" : "");
       if (p < 1) requestAnimationFrame(step);
       else el.textContent = target.toLocaleString("es-ES") + "+";
     }
-    requestAnimationFrame(step);
+    setTimeout(function () { requestAnimationFrame(step); }, delay);
   }
 
   /* ---------- Contadores animados (muro de confianza) ---------- */
@@ -145,12 +169,15 @@
     function animate(el) {
       var target = parseInt(el.getAttribute("data-count"), 10);
       var suffix = el.getAttribute("data-suffix") || "";
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduce) { el.textContent = target.toLocaleString("es-ES") + suffix; return; }
       var dur = 1600, start = null;
+      var from = Math.floor(target * 0.9); // arranca alto: nunca se ve "0"
       function step(ts) {
         if (!start) start = ts;
         var p = Math.min((ts - start) / dur, 1);
         var eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
-        var val = Math.floor(eased * target);
+        var val = Math.floor(from + (target - from) * eased);
         el.textContent = val.toLocaleString("es-ES") + suffix;
         if (p < 1) requestAnimationFrame(step);
         else el.textContent = target.toLocaleString("es-ES") + suffix;

@@ -87,9 +87,9 @@
       <a href="#inicio" class="brand" aria-label="Construcciones Hermanos Rodríguez - Inicio">
         <span class="brand__mark" aria-hidden="true">
           <!-- Logo H.R fiel a la imagen de marca: H.R naranja + tejado gris detrás -->
-          <svg viewBox="0 0 220 120" width="56" height="31">
+          <svg viewBox="0 0 220 120" width="56" height="31" class="brand__logo">
             <path class="brand__roof" d="M22 80 L110 24 L198 80" fill="none" stroke="currentColor" stroke-width="20" stroke-linejoin="round" stroke-linecap="round"/>
-            <text x="110" y="104" text-anchor="middle" font-family="'Archivo', 'Outfit', sans-serif" font-weight="900" font-size="76" letter-spacing="-2" fill="var(--orange)">H<tspan font-size="40">.</tspan>R</text>
+            <text class="brand__hr" x="110" y="104" text-anchor="middle" font-family="'Archivo', 'Outfit', sans-serif" font-weight="900" font-size="76" letter-spacing="-2" fill="var(--orange)">H<tspan font-size="40">.</tspan>R</text>
           </svg>
         </span>
         <span class="brand__text">
@@ -130,7 +130,7 @@
     <div class="hero__content">
       <span class="hero__eyebrow reveal">Construccions · Reformes · Rehabilitació</span>
       <h1 class="hero__title reveal">
-        Más de <span class="hero__count" id="heroDays" aria-label="más de 18.250">18.250+</span> días
+        <span class="hero__count" id="heroDays" aria-label="18.250 o más días">18.250+</span> días
         <span class="accent">construyendo confianza</span>
       </h1>
       <p class="hero__sub reveal">Construcción, reformas integrales y rehabilitación de viviendas en la provincia de Girona.</p>
@@ -156,11 +156,11 @@
     <div class="container">
       <div class="trust__grid">
         <div class="trust__item reveal">
-          <span class="trust__num" data-count="18250" data-suffix="+">0</span>
+          <span class="trust__num" data-count="18250" data-suffix="+">18.250+</span>
           <span class="trust__label">Días construyendo</span>
         </div>
         <div class="trust__item reveal">
-          <span class="trust__num" data-count="50" data-suffix="+">0</span>
+          <span class="trust__num" data-count="50" data-suffix="+">50+</span>
           <span class="trust__label">Años de experiencia</span>
         </div>
         <div class="trust__item reveal">
@@ -383,20 +383,22 @@
   <!-- ====================================================== -->
   <section class="ba">
     <div class="container">
-      <span class="kicker kicker--center reveal">Antes y después</span>
+      <span class="kicker kicker--center reveal">Obra y resultado</span>
       <h2 class="section-title reveal">El cambio se ve</h2>
-      <p class="section-sub reveal">Las reformas bien hechas no solo se explican. Se ven.</p>
+      <p class="section-sub reveal">De una vivienda con potencial a un espacio renovado, funcional y preparado para disfrutar.</p>
 
       <!-- Slider deslizable con clip-path (responsive desktop + táctil) -->
       <div class="ba__compare reveal" id="baCompare" style="--pos:50%">
-        <img class="ba__img ba__img--after" src="images/after.jpg" alt="Imagen representativa de un espacio después de la reforma" />
-        <img class="ba__img ba__img--before" id="baBefore" src="images/before.jpg" alt="Imagen representativa de un espacio antes de la reforma" />
-        <div class="ba__handle" id="baHandle" role="slider" aria-label="Comparar antes y después" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+        <img class="ba__img ba__img--after" src="images/slider-resultado-final.jpg" alt="Imagen representativa de vivienda mediterránea rehabilitada con vistas al mar" />
+        <img class="ba__img ba__img--before" id="baBefore" src="images/slider-obra-en-marcha.jpg" alt="Imagen representativa de obra en marcha en vivienda mediterránea en Roses" />
+        <div class="ba__handle" id="baHandle" role="slider" aria-label="Comparar obra en marcha y resultado final" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
           <span class="ba__grip" aria-hidden="true">⇄</span>
         </div>
-        <span class="ba__tag ba__tag--before">Antes</span>
-        <span class="ba__tag ba__tag--after">Después</span>
+        <span class="ba__tag ba__tag--before">Obra en marcha</span>
+        <span class="ba__tag ba__tag--after">Resultado final</span>
       </div>
+
+      <p class="ba__note reveal">Imágenes representativas de rehabilitación y reforma integral en entorno mediterráneo. Próximamente incorporaremos trabajos reales de la empresa.</p>
     </div>
   </section>
 
