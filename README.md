@@ -1,3 +1,16 @@
+
+## ✅ Actualización — fotos del equipo integradas
+- Se ha sustituido `images/history.jpg` por **`images/equipo-mar.jpg`** (foto real del equipo) en la sección Historia.
+- Se ha añadido **`images/equipo-vehiculos.jpg`** (flota rotulada) en la sección Contacto.
+- Textos, titulares y CTAs revisados para captación de clientes y SEO local.
+- Email corregido a `construccionesrodriguez2021@gmail.com` en toda la web (incluidas legales).
+- Nueva sección **"Por qué elegirnos"** tras la Historia.
+
+### Pendiente para dejarla 100% lista
+1. **Fotos de obras reales** → sustituir los placeholders de: `hero.jpg`, galería `project-1..9.jpg`, slider `slider-obra-en-marcha.jpg` / `slider-resultado-final.jpg`, y la sección "oficio".
+2. **Datos fiscales** en `aviso-legal.html` y `privacidad.html` (NIF/CIF, titular, domicilio).
+3. **Dominio** en las URLs marcadas `DOMINIO PENDIENTE` del `index.html`.
+
 # Construcciones Hermanos Rodríguez — Web
 
 Web de una sola página (landing) en **HTML + CSS + JavaScript puro**. Sin frameworks ni build. Lista para subir a **GitHub Pages** o cualquier hosting estático.

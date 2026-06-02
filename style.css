@@ -471,3 +471,8 @@ body.intro .hero__tag     { transition-delay: .72s; }
   .step { padding: 1.3rem 1.4rem; gap: 1rem; }
   .hero__actions .btn { flex: 1; }
 }
+
+/* Foto de equipo/flota en la columna de contacto */
+.quote__photo { margin-top: 1.8rem; }
+.quote__photo img { width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow); display: block; }
+.quote__photo figcaption { margin-top: .7rem; font-size: .9rem; color: var(--muted); font-style: italic; }
