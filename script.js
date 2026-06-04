@@ -327,9 +327,20 @@
     function render() {
       steps.forEach(function (s, i) { s.classList.toggle("is-active", i === current); });
       bar.style.width = ((current + 1) / steps.length) * 100 + "%";
-      prevBtn.hidden = current === 0;
-      nextBtn.hidden = current === steps.length - 1;
-      sendBtn.hidden = current !== steps.length - 1;
+
+      var esPrimero = current === 0;
+      var esUltimo  = current === steps.length - 1;
+
+      // Atributo hidden (semántico)
+      prevBtn.hidden = esPrimero;
+      nextBtn.hidden = esUltimo;
+      sendBtn.hidden = !esUltimo;
+
+      // Refuerzo: forzamos el display para que NINGÚN CSS pise el atributo hidden.
+      // Así "Continuar" desaparece de verdad en el último paso y solo queda "Enviar solicitud".
+      prevBtn.style.display = esPrimero ? "none" : "";
+      nextBtn.style.display = esUltimo ? "none" : "";
+      sendBtn.style.display = esUltimo ? "" : "none";
     }
 
     nextBtn.addEventListener("click", function () {
