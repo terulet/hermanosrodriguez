@@ -476,3 +476,38 @@ body.intro .hero__tag     { transition-delay: .72s; }
 .quote__photo { margin-top: 1.8rem; }
 .quote__photo img { width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow); display: block; }
 .quote__photo figcaption { margin-top: .7rem; font-size: .9rem; color: var(--muted); font-style: italic; }
+
+/* ====================================================== */
+/* SELECTOR DE IDIOMA (ES · CA · FR · EN)                 */
+/* Integrado en el header, respeta estados del navbar.    */
+/* ====================================================== */
+.lang { display: flex; align-items: center; gap: .15rem; }
+.lang__opt {
+  color: #fff; font-weight: 600; font-size: .82rem; letter-spacing: .04em;
+  padding: .3rem .5rem; border-radius: 6px; line-height: 1;
+  opacity: .72; transition: opacity .25s, background .25s, color .3s;
+}
+.lang__opt:hover { opacity: 1; }
+.lang__opt.is-active { opacity: 1; color: var(--orange); }
+.lang__opt + .lang__opt { position: relative; }
+.lang__opt + .lang__opt::before {
+  content: ""; position: absolute; left: -.1rem; top: 50%; transform: translateY(-50%);
+  width: 1px; height: .9em; background: currentColor; opacity: .35;
+}
+/* Estado scrolled: texto oscuro como el resto del nav */
+.nav.is-scrolled .lang__opt { color: var(--ink); }
+.nav.is-scrolled .lang__opt.is-active { color: var(--orange); }
+
+/* Móvil: dentro del panel desplegable, en fila y más grande */
+@media (max-width: 820px) {
+  .lang {
+    order: 99; margin-top: .6rem; gap: .4rem;
+    justify-content: center; flex-wrap: wrap;
+  }
+  .lang__opt {
+    color: #fff !important; opacity: .85; font-size: 1.05rem;
+    padding: .4rem .7rem; border: 1px solid rgba(255,255,255,.25);
+  }
+  .lang__opt.is-active { color: var(--orange) !important; border-color: var(--orange); opacity: 1; }
+  .lang__opt + .lang__opt::before { display: none; }
+}
