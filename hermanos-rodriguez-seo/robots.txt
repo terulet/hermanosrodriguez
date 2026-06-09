@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hermanosrodriguez1975.es/sitemap.xml
