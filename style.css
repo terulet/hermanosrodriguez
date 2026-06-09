@@ -542,3 +542,23 @@ body.intro .hero__tag     { transition-delay: .72s; }
   .lang { right: 4rem; gap: .1rem; }
   .lang__opt { font-size: .76rem; padding: .25rem .3rem; }
 }
+/* ====================================================== */
+/* SEO LOCAL                                              */
+/* ====================================================== */
+
+.seo-local{
+  padding:80px 20px;
+  background:#f7f7f7;
+}
+
+.seo-local .container{
+  max-width:1000px;
+  margin:auto;
+  text-align:center;
+}
+
+.seo-local p{
+  line-height:1.8;
+  margin:18px 0;
+  color:var(--muted);
+}
