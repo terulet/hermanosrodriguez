@@ -215,10 +215,36 @@ a{color:inherit}
   opacity:1;background:var(--naranja);color:#fff;
 }
 .nav__call svg{width:15px;height:15px}
+@media(max-width:600px){
+  .nav{padding:.65rem 3%;gap:.3rem}
+  .brand{gap:.3rem;min-width:0}
+  .brand svg{width:32px;flex:none}
+  .brand b{font-size:.84rem;white-space:nowrap}
+  .brand small{display:none}
+  .lang--mob{margin-left:auto;margin-right:0;gap:0}
+  .lang--mob a{padding:.3rem .3rem;font-size:.67rem}
+  .nav__call--mob .nav__call{padding:.6rem}
+  .nav__call--mob .nav__call span{display:none}
+}
+.nav__phones{display:flex;flex-direction:column;gap:.1rem;background:var(--negro);border-radius:16px;padding:.45rem .8rem;white-space:nowrap}
+.nav__links .nav__phones a,.nav:not(.solid) .nav__links .nav__phones a{color:#fff;opacity:1;font-size:.76rem}
+.nav__phones a:hover{text-decoration:underline}
+.call-menu{position:relative}
+.call-menu summary{list-style:none;cursor:pointer}
+.call-menu summary::-webkit-details-marker{display:none}
+.call-menu__options{position:absolute;right:0;top:calc(100% + .5rem);min-width:220px;background:#fff;border:1px solid var(--linea);border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,.25);overflow:hidden}
+.call-menu__options a{display:block;padding:.8rem 1rem;color:var(--negro);font-weight:700;text-decoration:none;white-space:nowrap}
+.call-menu__options a:hover{background:var(--cal-2)}
+.sticky .call-menu__options{top:auto;bottom:calc(100% + .5rem);left:.5rem;right:auto}
+.sticky .call-menu__options a{display:block;color:var(--negro);font-size:.85rem;letter-spacing:0;text-transform:none}
+.sticky .call-menu summary{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.15rem;color:var(--cal);font-size:.66rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.hero__phones{display:flex;flex-wrap:wrap;gap:.5rem 1.3rem;margin-top:1rem}
+.hero__phones a{color:#fff;font-size:.9rem;font-weight:700;text-decoration:none}
+.hero__phones a:hover{text-decoration:underline}
 .lang--mob{margin-left:auto;margin-right:.6rem;color:var(--cal)}
 .nav.solid .lang--mob{color:var(--negro)}
 .nav:not(.solid) .nav__links .lang{color:var(--cal)}
-@media(min-width:900px){
+@media(min-width:1200px){
   .nav{padding:.85rem 4%}
   .nav__links{display:flex}
   .nav:not(.solid) .nav__links a{color:var(--cal)}
@@ -576,10 +602,10 @@ a{color:inherit}
       <a href="/en/" hreflang="en">EN</a>
     </span>
     <a href="#presupuesto" class="nav__call" style="background:var(--naranja)">Presupuesto gratis</a>
-    <a href="tel:+34687242997" class="nav__call" style="background:var(--negro)">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
-      687 242 997
-    </a>
+    <div class="nav__phones" aria-label="Teléfonos de contacto">
+      <a href="tel:+34687242997">Carlos · 687 242 997</a>
+      <a href="tel:+34615959381">Sergio · 615 959 381</a>
+    </div>
   </nav>
   <span class="lang lang--mob" role="navigation" aria-label="Idioma">
     <a href="/" class="on" hreflang="es" aria-current="true">ES</a>
@@ -587,10 +613,15 @@ a{color:inherit}
     <a href="/fr/" hreflang="fr">FR</a>
     <a href="/en/" hreflang="en">EN</a>
   </span>
-  <a href="tel:+34687242997" class="nav__call nav__call--mob" id="navCallMobile" aria-label="Llamar al 687 242 997">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
-    Llamar
-  </a>
+  <details class="call-menu nav__call--mob">
+    <summary class="nav__call" aria-label="Elegir teléfono para llamar">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg> <span>Llamar</span>
+    </summary>
+    <div class="call-menu__options">
+      <a href="tel:+34687242997">Carlos · 687 242 997</a>
+      <a href="tel:+34615959381">Sergio · 615 959 381</a>
+    </div>
+  </details>
 </header>
 
 <!-- ====================================================== -->
@@ -617,6 +648,11 @@ a{color:inherit}
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.9 11.9 0 0 0 12.1 0C5.5 0 .2 5.3.2 11.9c0 2.1.5 4.2 1.6 6L0 24l6.3-1.7a11.9 11.9 0 0 0 5.8 1.5c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.5-8.4ZM12.1 21.8a9.9 9.9 0 0 1-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4a9.9 9.9 0 1 1 8.4 4.7Zm5.4-7.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.8 1-1 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.6-1-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4l-.5-.4Z"/></svg>
           WhatsApp directo
         </a>
+      </div>
+
+      <div class="hero__phones" aria-label="Teléfonos de contacto">
+        <a href="tel:+34687242997">Carlos · 687 242 997</a>
+        <a href="tel:+34615959381">Sergio · 615 959 381</a>
       </div>
 
       <p class="hero__since">El oficio de <b>Manolo Rodríguez</b>, hoy en manos de <b>Carlos</b> y <b>Sergio</b>. Las herramientas cambian, los&nbsp;valores&nbsp;no.</p>
@@ -659,7 +695,7 @@ a{color:inherit}
         <p>Se ha abierto WhatsApp con tu mensaje. Si no se abrió, <a href="#" id="parteRetry" style="color:var(--naranja);font-weight:700">pulsa aquí</a>.</p>
       </div>
 
-      <p class="parte__tel">¿Prefieres hablar? <a href="tel:+34687242997">Llama a Carlos · 687 242 997</a></p>
+      <p class="parte__tel">¿Prefieres hablar? <a href="tel:+34687242997">Carlos · 687 242 997</a> · <a href="tel:+34615959381">Sergio · 615 959 381</a></p>
     </form>
   </div>
 </section>
@@ -929,10 +965,15 @@ a{color:inherit}
 <!-- BARRA FIJA MÓVIL                                        -->
 <!-- ====================================================== -->
 <nav class="sticky" aria-label="Contacto rápido">
-  <a href="tel:+34687242997" class="sticky__call">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
-    Llamar
-  </a>
+  <details class="call-menu sticky__call">
+    <summary aria-label="Elegir teléfono para llamar">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg> Llamar
+    </summary>
+    <div class="call-menu__options">
+      <a href="tel:+34687242997">Carlos · 687 242 997</a>
+      <a href="tel:+34615959381">Sergio · 615 959 381</a>
+    </div>
+  </details>
   <a href="https://wa.me/34687242997?text=Hola%2C%20quiero%20pedir%20presupuesto%20para%20una%20reforma." target="_blank" rel="noopener" class="sticky__wa">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.9 11.9 0 0 0 12.1 0C5.5 0 .2 5.3.2 11.9c0 2.1.5 4.2 1.6 6L0 24l6.3-1.7a11.9 11.9 0 0 0 5.8 1.5c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.5-8.4ZM12.1 21.8a9.9 9.9 0 0 1-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4a9.9 9.9 0 1 1 8.4 4.7Zm5.4-7.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.8 1-1 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.6-1-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4l-.5-.4Z"/></svg>
     WhatsApp
